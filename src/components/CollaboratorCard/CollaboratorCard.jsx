@@ -5,7 +5,6 @@ import DeleteCollaborator from '../DeleteCollaboratorButton/DeleteCollaborator'
 
 const CollaboratorCard = ({ collaborator }) => {
     const user = useSelector(state=>state.auth.user.user);
-    console.log("my user",user);
     return (
         <div>
             {

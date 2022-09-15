@@ -1,8 +1,7 @@
 import { getAccessTokenFromLocalStorage } from "../userService/localStorage";
 import axios from "axios"
 
-const data= getAccessTokenFromLocalStorage("accessToken")? getAccessTokenFromLocalStorage("accessToken"):null
-console.log("dataInput",data)
+const data = getAccessTokenFromLocalStorage("accessToken") ? getAccessTokenFromLocalStorage("accessToken"):null
 const accessToken =data?.token;
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:7000/api/',

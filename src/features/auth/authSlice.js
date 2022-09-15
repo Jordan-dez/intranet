@@ -22,7 +22,6 @@ const initialState = {
     isError: false,
     message: '',
 }
-console.log("acces token", getAccessTokenFromLocalStorage('accessToken'));
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -32,7 +31,6 @@ export const authSlice = createSlice({
             console.log("pennding");
         },
         [login.fulfilled]: (state, { payload }) => {
-            console.log(payload)
             return { ...state, user: payload };
         },
         [login.rejected]: () => {
