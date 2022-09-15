@@ -2,7 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 
 const Banner = () => {
 
@@ -18,6 +18,11 @@ const Banner = () => {
                         <Nav className={`me-auto`}>
                             <Nav.Link href="/collaborateurs">collaborateur<span className="text-white"></span></Nav.Link>
                         </Nav>
+                        {user.isAdmin &&
+                            <Nav className={`me-auto`}>
+                                <Nav.Link href="/ajoutercollaborateur">ajouter<span className="text-white"></span></Nav.Link>
+                            </Nav>
+                        }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
