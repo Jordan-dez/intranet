@@ -24,7 +24,7 @@ const Login = ({setToken}) => {
                 email,password
             }
             await dispatch(login(user))
-            navigate("/ajoutercollaborateur")
+            navigate("/direbonjour")
         })()
     }, [dispatch,email,password]);
     return (

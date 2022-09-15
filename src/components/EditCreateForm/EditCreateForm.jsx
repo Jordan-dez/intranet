@@ -14,8 +14,8 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
     }
     const updateCollaborateur = async (values) => {
         console.log("update value", values.id);
-        const response= await updateCollaborator(values.id,values);
-        console.log("response",response);
+        const response = await updateCollaborator(values.id, values);
+        console.log("response", response);
     }
     console.log("isEdit", isEdit)
     //values initiales d'un collaborateur
@@ -68,7 +68,7 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
         <div>
             <Formik
                 initialValues={initialValues}
-                onSubmit={isEdit?updateCollaborateur:addCollaborateur}
+                onSubmit={isEdit ? updateCollaborateur : addCollaborateur}
                 validationSchema={validationSchema}
                 enableReinitialize={true}
             >

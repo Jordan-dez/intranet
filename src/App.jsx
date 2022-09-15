@@ -12,15 +12,17 @@ import {useSelector} from "react-redux"
 import Collaborators from './views/Collaborators/Collaborators';
 import RandomCollaborator from './views/RandomCollaborator/RandomCollaborator';
 import AddEditCollaborator from './views/AddEditCollaborator/AddEditCollaborator';
+import EditCollaborator from './views/EditCollaborator/EditCollaborator';
+import { setAccesTokenStorage } from './services/userService/localStorage';
 
 const ProtectedRoute = ({children}) => {
   const userToken = useSelector(state => state.auth.user?.token);
-  console.log(userToken);
   if (!userToken) {
     return <Navigate to="/" replace={true} />;
   }
   return children ? children : <Outlet />;
 }
+
 
 
 
@@ -33,7 +35,7 @@ function App() {
           <Route path="/collaborateurs" element={<Collaborators/>}  />
           <Route path="/direbonjour" element={<RandomCollaborator/>} />
           <Route path="/ajoutercollaborateur" element={<AddEditCollaborator/>} />
-          <Route path="/modifiercollaborateur/:id" element={<AddEditCollaborator/>} />
+          <Route path="/modifiercollaborateur/:id" element={<EditCollaborator/>} />
         </Route>
       </Routes>
     </BrowserRouter>

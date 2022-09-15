@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import Banner from '../../components/Banner/Banner';
 import CollaboratorListing from '../../components/CollaboratorListing/CollaboratorListing';
 import { getCollaborators } from '../../services/collaboratorService/collaboratorService';
 import { containCity, containFirstname, containService } from '../../services/utils/utils';
@@ -20,7 +21,7 @@ const Collaborators = () => {
         }
         if (!loaded.current) {
             loaded.current = true
-             fetchCollaborators();
+            fetchCollaborators();
         }
 
     }, []);
@@ -30,11 +31,12 @@ const Collaborators = () => {
         const { name, value } = e.target;
         setFilters({ ...filters, [name]: value });
         const { firstname, service, city } = { ...filters, [name]: value };
-        const filteredCollaborators =collaborators.filter(collaborator=>containFirstname(collaborator,firstname) && containCity(collaborator,city) && containService(collaborator,service));
+        const filteredCollaborators = collaborators.filter(collaborator => containFirstname(collaborator, firstname) && containCity(collaborator, city) && containService(collaborator, service));
         setCollaboratorsList(filteredCollaborators);
     }
     return (
         <>
+            <Banner />
             <div>
                 <div>
                     <label htmlFor="firstname">Nom</label>
@@ -53,7 +55,7 @@ const Collaborators = () => {
                     </select>
                 </div>
             </div>
-                {collaboratorsList.length}
+            {collaboratorsList.length}
             <CollaboratorListing collaborators={collaboratorsList} />
         </>
     )
