@@ -1,32 +1,34 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState,useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { login } from '../../features/auth/authSlice';
 import { setAccesTokenStorage } from '../../services/userService/localStorage';
 import { loginUser } from '../../services/userService/user';
 
 
-const Login = ({setToken}) => {
+const Login = ({ setToken }) => {
+    const issetToken = useSelector(state => state.auth.user?.token);
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    useEffect(() => {
+        //check if user already authenticated return to /direbonjour
+        if(issetToken) {
+             navigate("/direbonjour")
+        }
+    }, []);
+
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
         (async () => {
-            // console.log(email, password);
-            // loginUser(email, password).then((data) => {
-            //     console.log("my data",data.data);
-            //     setToken(data.data.token);
-            //     setAccesTokenStorage(data.data.token)
-            // })
-            const user={
-                email,password
+            const user = {
+                email, password
             }
             await dispatch(login(user))
             navigate("/direbonjour")
         })()
-    }, [dispatch,email,password]);
+    }, [dispatch, email, password]);
     return (
         <section>
             <h1>Se connecter</h1>
