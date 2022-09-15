@@ -5,8 +5,8 @@ const CollaboratorCard = ({ collaborator }) => {
         <div>
             {
                 collaborator &&<div>
-                    <p>{collaborator.lastname} - {collaborator.firstname}</p>
-                    <p>{collaborator.country}</p>
+                    <p>Nom :{collaborator.lastname} - prenom: {collaborator.firstname}</p>
+                    <p>{collaborator.city}</p>
                     <p>{collaborator.service}</p>
                     <img src={collaborator.photo} alt={collaborator.lastname} />
                     {/* {

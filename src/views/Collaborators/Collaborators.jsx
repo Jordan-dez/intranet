@@ -11,25 +11,17 @@ const Collaborators = () => {
     const [filters, setFilters] = useState({ service: '', firstname: '', city: '' });
 
     useEffect(() => {
-        if(!collaborators.length){
-            (async ()=>{
-                const response = await getCollaborators().catch((error) => {
-                    console.log(error);
-                });
-                setCollaborators(response.data)
-                setCollaboratorsList(response.data.reverse());
-            })()
+        const fetchCollaborators = async () => {
+            const response = await getCollaborators().catch((error) => {
+                console.log(error);
+            });
+            setCollaborators(response.data)
+            setCollaboratorsList(response.data);
         }
-        // const fetchCollaborators = async () => {
-        //     const response = await getCollaborators().catch((error) => {
-        //         console.log(error);
-        //     });
-        //     setCollaborators(response.data)
-        // }
-        // if (!loaded.current) {
-        //     loaded.current = true
-        //     // fetchCollaborators();
-        // }
+        if (!loaded.current) {
+            loaded.current = true
+             fetchCollaborators();
+        }
 
     }, []);
 
@@ -37,12 +29,9 @@ const Collaborators = () => {
         e.preventDefault();
         const { name, value } = e.target;
         setFilters({ ...filters, [name]: value });
-        console.log(filters)
         const { firstname, service, city } = { ...filters, [name]: value };
-        // console.log(firstname, service, city );
         const filteredCollaborators =collaborators.filter(collaborator=>containFirstname(collaborator,firstname) && containCity(collaborator,city) && containService(collaborator,service));
         setCollaboratorsList(filteredCollaborators);
-        console.log("collaboratorsList",collaboratorsList);
     }
     return (
         <>
