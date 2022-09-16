@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Banner from '../../components/Banner/Banner';
 import CollaboratorCard from '../../components/CollaboratorCard/CollaboratorCard';
 import { getRandomCollaborator } from '../../services/collaboratorService/collaboratorService';
 
@@ -24,15 +25,19 @@ const RandomCollaborator = () => {
 
 
   return (
-    <div>
-      <h4>Bienvenue sur l'intranet</h4>
-      <p>la plate forme de l'entreprise qui vous permet de retrouver tous les collaborateurs</p>
-      <p>Avez-vous dit bonjour à :</p>
-      {
-        collaborator && <CollaboratorCard collaborator={collaborator} />
-      }
-      <button onClick={nextRandomCollaborator}>Dire bonjour à quelqu'un d'autre</button>
-    </div>
+    <>
+      <Banner />
+      <div>
+        <h4>Bienvenue sur l'intranet</h4>
+        <p>la plate forme de l'entreprise qui vous permet de retrouver tous les collaborateurs</p>
+        <p>Avez-vous dit bonjour à :</p>
+        {
+          collaborator && <CollaboratorCard collaborator={collaborator} />
+        }
+        <button onClick={nextRandomCollaborator}>Dire bonjour à quelqu'un d'autre</button>
+      </div>
+    </>
+
   )
 }
 

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from "react-redux"
+import { Link } from 'react-router-dom'
 
 const Banner = () => {
 
@@ -27,7 +28,7 @@ const Banner = () => {
                 </Container>
             </Navbar>
             <div>
-                <img src={user.photo} alt={user.lastname} />
+                <Link to={`/modifierprofil/${user.id}`}><img src={user.photo} alt={user.lastname} /></Link>
                 <p>{user.lastname} - {user.firstname}</p>
             </div>
         </header>
