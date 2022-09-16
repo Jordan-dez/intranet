@@ -50,7 +50,7 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
             country: Yup.string().required('veuillez saisir son pays dans lequel il travail'),
             photo: Yup.string()
                 .matches(
-                    /((https?):\/\/)$/, 'veuillez entrer un url commençant par htpps://'
+                    /^https:\/\//, 'veuillez entrer un url commençant par htpps://'
                 )
                 .required('Please enter website'),
 
