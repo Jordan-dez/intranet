@@ -7,7 +7,7 @@ const CollaboratorListing = ({ collaborators,setIsDeleted }) => {
 
     const deleteUser = async (id) => {
         const response = await deleteCollaborator(id)
-        setIsDeleted(true)
+        window.location.reload()
     }
     
     return (
