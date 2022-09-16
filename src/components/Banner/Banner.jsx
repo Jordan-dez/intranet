@@ -4,10 +4,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
+import { RemoveFromLocalStorage } from '../../services/userService/localStorage';
+import { useNavigate } from "react-router-dom"
 
 const Banner = () => {
 
+    const navigate = useNavigate()
     const user = useSelector(state => state.auth.user.user)
+    const logOut = ()=>{
+        RemoveFromLocalStorage();
+        window.location.href = '/';
+    }
 
     return (
         <header>
@@ -31,6 +38,7 @@ const Banner = () => {
                 <Link to={`/modifierprofil/${user.id}`}><img src={user.photo} alt={user.lastname} /></Link>
                 <p>{user.lastname} - {user.firstname}</p>
             </div>
+            <button onClick={logOut}>Déconnexion</button>
         </header>
     )
 }

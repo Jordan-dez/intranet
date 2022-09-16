@@ -13,13 +13,16 @@ export function getCollaborator(id){
 }
 // fetching random collaborator
 export async function getRandomCollaborator() {
-    const data = axiosInstance.get("collaborateurs/random")
+    const data = axiosInstance.get("collaborateurs/random",{
+        
+    })
     return data;
 }
 //adding a new collaborator
 export async function addCollaborator(collaborator) {
     try{
         const addResponse = await axiosInstance.post("collaborateurs",collaborator)
+        return addResponse
     }catch(e){
         console.log(e);
     }
@@ -29,6 +32,14 @@ export async function addCollaborator(collaborator) {
 export async function updateCollaborator(id,collaborator) {
     try{
         const addResponse = await axiosInstance.put(`collaborateurs/${id}`,collaborator)
+    }catch(e){
+        console.log(e);
+    }
+}
+export async function deleteCollaborator(id) {
+    try{
+        const deleteResponse = await axiosInstance.delete(`collaborateurs/${id}`)
+        return deleteResponse
     }catch(e){
         console.log(e);
     }

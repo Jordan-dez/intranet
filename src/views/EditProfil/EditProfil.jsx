@@ -1,6 +1,7 @@
 import React,{ useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import Banner from '../../components/Banner/Banner';
+import EditCreateForm from '../../components/EditCreateForm/EditCreateForm';
 import { getCollaborator } from '../../services/collaboratorService/collaboratorService';
 
 const EditProfil = () => {
@@ -15,14 +16,11 @@ const EditProfil = () => {
         }
         getdata();
     }, [id]);
-
-    console.log("data",profil)
   return (
     <div>
         <Banner/>
         <h1>Editer profil</h1>
-        
-
+        <EditCreateForm isEdit={true} user={profil}/>
     </div>
   )
 }

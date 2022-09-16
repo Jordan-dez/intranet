@@ -10,6 +10,7 @@ const Collaborators = () => {
     const [collaboratorsList, setCollaboratorsList] = useState([]);
     const loaded = useRef(false);
     const [filters, setFilters] = useState({ service: '', firstname: '', city: '' });
+    const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
         const fetchCollaborators = async () => {
@@ -23,8 +24,13 @@ const Collaborators = () => {
             loaded.current = true
             fetchCollaborators();
         }
+        console.log("isDeleted",isDeleted)
+    }, [isDeleted]);
 
-    }, []);
+    // useEffect(() => {
+    //     console.log(isDeleted);
+    // }, [isDeleted])
+
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -56,7 +62,7 @@ const Collaborators = () => {
                 </div>
             </div>
             {collaboratorsList.length}
-            <CollaboratorListing collaborators={collaboratorsList} />
+            <CollaboratorListing collaborators={collaboratorsList} setIsDeleted={setIsDeleted} />
         </>
     )
 }

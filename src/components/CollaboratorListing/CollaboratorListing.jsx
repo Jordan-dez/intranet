@@ -1,13 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { getCollaborators } from '../../services/collaboratorService/collaboratorService';
+import { deleteCollaborator, getCollaborators } from '../../services/collaboratorService/collaboratorService';
 import CollaboratorCard from '../CollaboratorCard/CollaboratorCard';
 
-const CollaboratorListing = ({ collaborators }) => {
+const CollaboratorListing = ({ collaborators,setIsDeleted }) => {
 
+
+    const deleteUser = async (id) => {
+        const response = await deleteCollaborator(id)
+        setIsDeleted(true)
+    }
+    
     return (
         <div>
             {
-                collaborators && collaborators.map((collaborator) => <CollaboratorCard key={collaborator.id} collaborator={collaborator} />)
+                collaborators && collaborators.map((collaborator) => <CollaboratorCard key={collaborator.id} collaborator={collaborator} deleteUser={deleteUser} />)
             }
         </div>
     )
