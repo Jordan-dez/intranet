@@ -6,15 +6,13 @@ import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 import { RemoveFromLocalStorage } from '../../services/userService/localStorage';
 import { useNavigate } from "react-router-dom"
+import { logOut } from '../../services/utils/utils';
 
 const Banner = () => {
 
     const navigate = useNavigate()
     const user = useSelector(state => state.auth.user.user)
-    const logOut = ()=>{
-        RemoveFromLocalStorage();
-        window.location.href = '/';
-    }
+
 
     return (
         <header>
