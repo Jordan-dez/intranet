@@ -23,7 +23,7 @@ const CollaboratorCard = ({ collaborator,deleteUser }) => {
                         user.isAdmin ? <>
                             <Link to={`/modifiercollaborateur/${collaborator.id}`} >Modifier</Link>
                             {/* <DeleteCollaborator id={collaborator.id}/> */}
-                            {console.log(collaborator.id)}
+                            {/* {console.log(collaborator.id)} */}
                             <button onClick={() => deleteUser(collaborator.id)}>Supprimer</button>
                         </>
                             :

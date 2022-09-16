@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { deleteCollaborator, getCollaborators } from '../../services/collaboratorService/collaboratorService';
 import CollaboratorCard from '../CollaboratorCard/CollaboratorCard';
 
-const CollaboratorListing = ({ collaborators,setIsDeleted }) => {
+const CollaboratorListing = ({ collaborators,setIsDeleted}) => {
 
 
     const deleteUser = async (id) => {
         const response = await deleteCollaborator(id)
-        window.location.reload()
+        setIsDeleted(true)
+        // window.location.reload()
     }
     
     return (

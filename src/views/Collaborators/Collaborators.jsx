@@ -11,25 +11,27 @@ const Collaborators = () => {
     const loaded = useRef(false);
     const [filters, setFilters] = useState({ service: '', firstname: '', city: '' });
     const [isDeleted, setIsDeleted] = useState(false);
-
+    
+    const fetchCollaborators = async () => {
+        const response = await getCollaborators().catch((error) => {
+            console.log(error);
+        });
+        setCollaborators(response.data)
+        setCollaboratorsList(response.data);
+    }
     useEffect(() => {
-        const fetchCollaborators = async () => {
-            const response = await getCollaborators().catch((error) => {
-                console.log(error);
-            });
-            setCollaborators(response.data)
-            setCollaboratorsList(response.data);
-        }
+
         if (!loaded.current) {
             loaded.current = true
             fetchCollaborators();
         }
-        console.log("isDeleted",isDeleted)
-    }, [isDeleted]);
+    },[]);
 
-    // useEffect(() => {
-    //     console.log(isDeleted);
-    // }, [isDeleted])
+    useEffect(() => {
+        fetchCollaborators();
+        setIsDeleted(false);
+        console.log("test");
+    }, [isDeleted])
 
 
     const handleChange = (e) => {
