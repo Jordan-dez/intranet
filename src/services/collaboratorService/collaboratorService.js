@@ -1,4 +1,4 @@
-import axiosInstance from "../axiosInstance/axiosIntance";
+import axiosInstance, { getAuthorizationHeader } from "../axiosInstance/axiosIntance";
 import axios from "axios"
 
 // fetching allCollaborators
@@ -14,7 +14,7 @@ export function getCollaborator(id){
 // fetching random collaborator
 export async function getRandomCollaborator() {
     const data = axiosInstance.get("collaborateurs/random",{
-        
+        headers: { Authorization: getAuthorizationHeader() }
     })
     return data;
 }
