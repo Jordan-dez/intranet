@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux"
-import DeleteCollaborator from '../DeleteCollaboratorButton/DeleteCollaborator'
 import { deleteCollaborator } from '../../services/collaboratorService/collaboratorService'
 
-const CollaboratorCard = ({ collaborator,deleteUser }) => {
+const CollaboratorCard = ({ collaborator,deleteUser,needbuttons=false }) => {
     
     const user = useSelector(state => state.auth.user.user);
 
@@ -20,7 +19,7 @@ const CollaboratorCard = ({ collaborator,deleteUser }) => {
                         console.log(collaborator)
                     } */}
                     {
-                        user.isAdmin ? <>
+                        user.isAdmin && needbuttons ? <>
                             <Link to={`/modifiercollaborateur/${collaborator.id}`} >Modifier</Link>
                             {/* <DeleteCollaborator id={collaborator.id}/> */}
                             {/* {console.log(collaborator.id)} */}

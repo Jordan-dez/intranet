@@ -11,7 +11,7 @@ const Collaborators = () => {
     const loaded = useRef(false);
     const [filters, setFilters] = useState({ service: '', firstname: '', city: '' });
     const [isDeleted, setIsDeleted] = useState(false);
-    
+
     const fetchCollaborators = async () => {
         const response = await getCollaborators().catch((error) => {
             console.log(error);
@@ -25,7 +25,7 @@ const Collaborators = () => {
             loaded.current = true
             fetchCollaborators();
         }
-    },[]);
+    }, []);
 
     useEffect(() => {
         fetchCollaborators();
@@ -44,25 +44,28 @@ const Collaborators = () => {
     }
     return (
         <>
+    
             <Banner />
-            <div>
+            <main>
                 <div>
-                    <label htmlFor="firstname">Nom</label>
-                    <input type="text" id='firstname' onChange={handleChange} name="firstname" value={filters.firstname} />
+                    <div>
+                        <label htmlFor="firstname">Nom</label>
+                        <input type="text" id='firstname' onChange={handleChange} name="firstname" value={filters.firstname} />
+                    </div>
+                    <div>
+                        <label htmlFor="city">localisation</label>
+                        <input type="text" id='city' onChange={handleChange} name="city" value={filters.city} />
+                    </div>
+                    <div>
+                        <select name="service" id="service" onChange={handleChange}>
+                            <option>veuillez selectionnez</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="client">Client</option>
+                            <option value="technique">Technique</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="city">localisation</label>
-                    <input type="text" id='city' onChange={handleChange} name="city" value={filters.city} />
-                </div>
-                <div>
-                    <select name="service" id="service" onChange={handleChange}>
-                        <option>veuillez selectionnez</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="client">Client</option>
-                        <option value="technique">Technique</option>
-                    </select>
-                </div>
-            </div>
+            </main>
             {collaboratorsList.length}
             <CollaboratorListing collaborators={collaboratorsList} setIsDeleted={setIsDeleted} />
         </>

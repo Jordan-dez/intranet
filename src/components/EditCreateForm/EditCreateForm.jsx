@@ -7,19 +7,13 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
     let initialValues = {};
 
     const addCollaborateur = async (values) => {
-        // console.log("values", values);
         const response = await addCollaborator(values);
-        // console.log("response", response.data);
 
     }
     const updateCollaborateur = async (values) => {
-        console.log("update value", values.id);
         const response = await updateCollaborator(values.id, values);
-        console.log("response", response);
     }
-    console.log("isEdit", isEdit)
     //values initiales d'un collaborateur
-    console.log(isEdit);
     if (isEdit) {
         initialValues = user;
 
@@ -52,18 +46,12 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
                 .matches(
                     /^https:\/\//, 'veuillez entrer un url commençant par htpps://'
                 )
-                .required('Please enter website'),
+                .required('veuillez entrer un url commençant par htpps:// de votre photo'),
 
         })
     }
 
 
-    console.log("initialValues", initialValues);
-    // const onSubmit = async () => {
-    //     if (isEdit) {
-
-    //     }
-    // }
     return (
         <div>
             <Formik

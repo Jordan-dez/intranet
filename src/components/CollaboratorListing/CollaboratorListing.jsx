@@ -8,13 +8,12 @@ const CollaboratorListing = ({ collaborators,setIsDeleted}) => {
     const deleteUser = async (id) => {
         const response = await deleteCollaborator(id)
         setIsDeleted(true)
-        // window.location.reload()
     }
     
     return (
         <div>
             {
-                collaborators && collaborators.map((collaborator) => <CollaboratorCard key={collaborator.id} collaborator={collaborator} deleteUser={deleteUser} />)
+                collaborators && collaborators.map((collaborator) => <CollaboratorCard key={collaborator.id} collaborator={collaborator} deleteUser={deleteUser} needbuttons={true}/>)
             }
         </div>
     )
