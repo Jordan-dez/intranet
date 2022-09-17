@@ -6,7 +6,7 @@ const AddCollaborator = () => {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <div>
         <h1>Ajouter collaborateur</h1>
         <EditCreateForm isEdit={false} />

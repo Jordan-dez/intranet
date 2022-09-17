@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux"
 import { deleteCollaborator } from '../../services/collaboratorService/collaboratorService'
+import moment from 'moment';
 
-const CollaboratorCard = ({ collaborator,deleteUser,needbuttons=false }) => {
-    
+const CollaboratorCard = ({ collaborator, deleteUser, needbuttons = false }) => {
+
     const user = useSelector(state => state.auth.user.user);
 
     return (
@@ -15,14 +16,10 @@ const CollaboratorCard = ({ collaborator,deleteUser,needbuttons=false }) => {
                     <p>{collaborator.city}</p>
                     <p>{collaborator.service}</p>
                     <img src={collaborator.photo} alt={collaborator.lastname} />
-                    {/* {
-                        console.log(collaborator)
-                    } */}
+                    <p>{moment(new Date(collaborator?.birthdate), "MM/DD/YYYY").month(0).from(moment().month(0)).split(" ")[0]} ans</p>
                     {
                         user.isAdmin && needbuttons ? <>
                             <Link to={`/modifiercollaborateur/${collaborator.id}`} >Modifier</Link>
-                            {/* <DeleteCollaborator id={collaborator.id}/> */}
-                            {/* {console.log(collaborator.id)} */}
                             <button onClick={() => deleteUser(collaborator.id)}>Supprimer</button>
                         </>
                             :
