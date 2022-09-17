@@ -1,17 +1,65 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { addCollaborator, updateCollaborator } from '../../services/collaboratorService/collaboratorService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const EditCreateForm = ({ isEdit, user = {} }) => {
+
+    //déclaration des constantes et des variables
+    const navigate = useNavigate();
     let validationSchema;
     let initialValues = {};
 
+    //la fonction pour ajouter un collaborateur
+    /***
+     * cette fonction prend en parametre les données du formulaire elle fait appelle au service 
+     * permettant d'enregistrer un collaborateur,une fois que ce service ait enregirestré les infos reçues,returnne une reponse.
+     * Je vérifie que tout s'est bien passé ,j'affiche une notification puis je redirige l'utilisateur vers 
+     * la page /collaborateurs
+     */
     const addCollaborateur = async (values) => {
         const response = await addCollaborator(values);
+        if (response?.status === 201 || response?.status === 200) {
+            setTimeout(() => {
+                toast.success('👍Le collaborateur a été ajouté !', {
+                    position: "top-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+            setTimeout(() => { navigate("/collaborateurs") }, 3000);
+        }
 
     }
+    //la fonction pour modifier un collaborateur 
+    /***
+     * cette fonction prend en parametre les données du formulaire elle fait appelle au service 
+     * permettant de modifier un collaborateur,une fois que ce service ait enregirestré les infos,il returne une reponse
+     * je vérifie que tout s'est bien passé ,j'affiche une notification puis je redirige l'utilisateur vers 
+     * la page /direbonjour
+     */
     const updateCollaborateur = async (values) => {
         const response = await updateCollaborator(values.id, values);
+        if (response?.status === 201 || response?.status === 200) {
+            setTimeout(() => {
+                toast.success('👍 La mise à jour a été prise en compte !', {
+                    position: "top-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+            setTimeout(() => { navigate("/direbonjour") }, 3000);
+        }
     }
     //values initiales d'un collaborateur
     if (isEdit) {
@@ -51,7 +99,7 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
         })
     }
 
-
+    // 
     return (
         <div>
             <Formik
@@ -129,6 +177,7 @@ const EditCreateForm = ({ isEdit, user = {} }) => {
                     <button type="submit">{isEdit ? "sauvegarder" : "ajouter"}</button>
                 </Form>
             </Formik>
+            <ToastContainer />
         </div>
     )
 }
