@@ -1,0 +1,25 @@
+.search_form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.search_form>div{
+    margin: 0 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.search_form>div label{
+    margin-right: 10px;
+    font-weight: 600;
+}
+.search_form>div input, .search_form>div select{
+    width: 250px;
+    padding: 2px 5px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border-style: none;
+    border: 1px solid #797979;
+}
+.search_form>div input:focus-visible,.search_form>div select:focus-visible{
+    outline: #fe961d6e auto 1px;
+}

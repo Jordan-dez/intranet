@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Banner from '../../components/Banner/Banner';
 import CollaboratorCard from '../../components/CollaboratorCard/CollaboratorCard';
+import Footer from '../../components/Footer/Footer';
 import { getRandomCollaborator } from '../../services/collaboratorService/collaboratorService';
-
+import style from "./RandomCollaborator.module.css"
 const RandomCollaborator = () => {
 
   const [collaborator, setCollaborator] = useState(null);
@@ -28,14 +29,27 @@ const RandomCollaborator = () => {
     <>
       <Banner />
       <main>
-        <h4>Bienvenue sur l'intranet</h4>
-        <p>la plate forme de l'entreprise qui vous permet de retrouver tous les collaborateurs</p>
-        <p>Avez-vous dit bonjour à :</p>
-        {
-          collaborator && <CollaboratorCard collaborator={collaborator} />
-        }
-        <button onClick={nextRandomCollaborator}>Dire bonjour à quelqu'un d'autre</button>
+        <div className='container'>
+          <div className={`${style.title_container}`}>
+            <h1>Bienvenue sur <span className="text-orange">OneSoft </span> <span>Intranet</span></h1>
+            <p>La plate-forme de l'entreprise qui vous permet de retrouver tous les collaborateurs</p>
+            <p>Avez-vous dit bonjour à :</p>
+          </div>
+          <div className={`text-center ${style.sayhelloctnr}`}>
+            {
+              collaborator &&
+              <>
+                <CollaboratorCard collaborator={collaborator} />
+                <div>
+                  <button onClick={nextRandomCollaborator}>Dire bonjour à quelqu'un d'autre</button>
+                </div>
+              </>
+
+            }
+          </div>
+        </div>
       </main>
+      <Footer/>
     </>
 
   )

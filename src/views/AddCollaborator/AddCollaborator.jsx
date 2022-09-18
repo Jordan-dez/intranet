@@ -1,5 +1,6 @@
 import Banner from '../../components/Banner/Banner';
 import EditCreateForm from '../../components/EditCreateForm/EditCreateForm';
+import Footer from '../../components/Footer/Footer';
 
 
 const AddCollaborator = () => {
@@ -7,10 +8,14 @@ const AddCollaborator = () => {
   return (
     <>
       <Banner />
-      <div>
-        <h1>Ajouter collaborateur</h1>
-        <EditCreateForm isEdit={false} />
-      </div>
+      <main>
+        <div className="container">
+          <h1 className='text-center'>Ajouter un collaborateur</h1>
+          <EditCreateForm isEdit={false} />
+        </div>
+
+      </main>
+      <Footer/>
     </>
 
   )

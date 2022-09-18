@@ -14,7 +14,8 @@
 body {
   font-family: 'Montserrat', sans-serif;
 }
-main{
+
+main {
   padding-top: 150px;
 }
 
@@ -25,9 +26,19 @@ h4 {
   font-family: 'Arvo', serif;
 }
 
+h1 {
+  margin: 2rem 0;
+}
+
 img {
   width: 100%;
   height: auto;
+}
+
+p {
+  margin: 1.4rem 0;
+  font-size: 1.1rem;
+ word-break: break-all;
 }
 
 .container {
@@ -38,6 +49,15 @@ img {
   list-style: none;
   padding-left: 0;
 }
+
+.text-orange {
+  color: var(--clr-orange);
+}
+
+.text-center{
+  text-align: center;
+}
+
 
 @media screen and (min-width: 576px) {
   .container {

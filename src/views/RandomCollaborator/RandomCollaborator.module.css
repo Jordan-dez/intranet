@@ -1,0 +1,48 @@
+/****
+****
+Style de la page RandomCollaborator
+*/
+
+/***
+
+*/
+.title_container{
+    text-align: center;
+    margin-top: 2rem;
+}
+/*
+mettre le point jaune après le second span du h1
+*/
+.title_container h1 span:nth-child(2)::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #fe961d;
+    display: inline-block;
+    margin-left: 3px;
+    margin-top: 20px;
+
+}
+.sayhelloctnr{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.sayhelloctnr figure{
+    margin: 150px auto 50px;
+    
+}
+.sayhelloctnr button{
+    padding: 6px 20px;
+    background:#fe961d;
+    border-style:none ;
+    border: 1px solid #fe961d;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    transition: 0.5s;
+}
+.sayhelloctnr button:hover{
+    background: #fff;
+    color: #fe961d;
+}
