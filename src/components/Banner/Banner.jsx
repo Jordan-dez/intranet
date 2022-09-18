@@ -13,34 +13,12 @@ const Banner = () => {
 
     const navigate = useNavigate()
     const user = useSelector(state => state.auth.user.user)
-
-    {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ minHeight: "100px" }}>
-                <Container>
-                    <Navbar.Brand href="/direbonjour">OneSoft</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className={`me-auto`}>
-                            <Nav.Link href="/collaborateurs">collaborateur<span className="text-white"></span></Nav.Link>
-                        </Nav>
-                        {user.isAdmin &&
-                            <Nav className={`me-auto`}>
-                                <Nav.Link href="/ajoutercollaborateur">ajouter<span className="text-white"></span></Nav.Link>
-                            </Nav>
-                        }
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-            <div>
-                
-                <p>{user.lastname} - {user.firstname}</p>
-            </div>
-            <button onClick={logOut}>Déconnexion</button> */}
     return (
         <header>
             <div className={`container ${style.nab_bar}`}>
                 <div>
                     <Link to={`/direbonjour`} className={`${style.nav_brand}`}>
-                        <img src="asset/logo.png" alt="logo de OneSoft" style={{ width: 80 }} />
+                        <img src="/asset/logo.png" alt="logo de OneSoft" style={{ width: 80 }} />
                         <span>Intranet</span>
                     </Link>
                 </div>
