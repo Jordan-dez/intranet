@@ -17,3 +17,13 @@ export const logOut = () => {
     RemoveFromLocalStorage();
     window.location.href = '/';
 }
+
+export function responsiveNb() {
+    console.log("test")
+    let x = document.getElementById("burger");
+    if (x.className === "nab_bar_nav") {
+      x.className += " responsive";
+    } else {
+      x.className = "nab_bar_nav";
+    }
+  }

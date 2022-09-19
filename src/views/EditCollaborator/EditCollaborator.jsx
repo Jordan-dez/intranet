@@ -25,7 +25,7 @@ const EditCollaborator = () => {
             <Banner />
             <main>
                 <div className="container">
-                    <h1>Editer un collaborateur</h1>
+                    <h1 className='text-center'>Editer un collaborateur</h1>
                     <EditCreateForm isEdit={true} user={collaborator} />
                 </div>
 

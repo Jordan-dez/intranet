@@ -1,25 +1,90 @@
-.search_form{
+.search_form {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
     margin-bottom: 3rem;
 }
-.search_form>div{
-    margin: 0 1.5rem;
+
+.search_form>div {
+    /* margin: 0 1.5rem; */
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
+
 }
-.search_form>div label{
-    margin-right: 10px;
+
+.search_form>div label {
+    /* margin-right: 10px; */
+    width: 30%;
     font-weight: 600;
 }
-.search_form>div input, .search_form>div select{
-    width: 250px;
+
+.search_form>div input,
+.search_form>div select {
     padding: 2px 5px;
     font-size: 1.1rem;
     border-radius: 8px;
     border-style: none;
     border: 1px solid #797979;
 }
-.search_form>div input:focus-visible,.search_form>div select:focus-visible{
+
+.search_form>div select {
+    width: 90%;
+}
+
+.search_form>div input:focus-visible,
+.search_form>div select:focus-visible {
     outline: #fe961d6e auto 1px;
+}
+
+@media screen and (min-width: 992px) {
+    .search_form {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search_form>div {
+        margin-bottom: 0;
+        flex-direction: column;
+        /* justify-content: start; */
+        align-items: start;
+        width: 30%;
+        justify-content: end;
+
+    }
+
+    .search_form>div label,
+    .search_form>div input {
+        /* max-width: 90%; */
+        width: 100%;
+    }
+
+    .search_form>div label {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .search_form {
+        justify-content: center;
+    }
+
+    .search_form>div {
+        flex-direction: row;
+        margin: 0 1.5rem;
+        width: auto;
+        justify-content: start;
+        align-items: center;
+
+    }
+
+    .search_form>div label {
+        margin-bottom: 0;
+    }
+
+    .search_form>div input,
+    .search_form>div select {
+        width: 250px;
+        
+    }
 }

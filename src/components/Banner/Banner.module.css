@@ -9,9 +9,14 @@ header {
 
 .nab_bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: start;
     font-family: 'Arvo';
+
+}
+
+.nab_bar>* {
+    margin-bottom: 2rem;
 }
 
 .nab_bar a {
@@ -19,6 +24,7 @@ header {
     text-decoration: none;
     font-size: 1.1rem;
 }
+
 
 .nav_brand {
     font-weight: bold;
@@ -42,12 +48,16 @@ header {
 
 }
 
+.nav_brand img {
+    display: none;
+}
+
 .nab_bar_nav ul {
-    display: flex;
+    display: none;
 }
 
 .nab_bar_nav ul .nav_link {
-    margin: 0 15px;
+    margin: 10px 0px;
 }
 
 .nab_bar_nav ul .nav_link a {
@@ -73,8 +83,6 @@ header {
 
 .user_link {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .user_link img {
@@ -91,4 +99,75 @@ header {
 
 .user_link button:hover {
     color: #000;
+}
+
+.burgur {
+    font-size: 1.2rem;
+    padding: 2px 5px;
+    border-style: none;
+    border: 1px solid var(--clr-orange);
+    background-color: #fffcf8;
+    border-radius: 5px;
+}
+
+.nab_bar_nav.responsive .burgur {
+    display: block;
+    width: min-content;
+    font-size: 1.2rem;
+
+
+
+}
+
+.nab_bar_nav.responsive {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.nab_bar_nav.responsive ul {
+    float: none;
+    display: block;
+}
+
+@media screen and (min-width: 992px) {
+    .nav_brand img {
+        display: block;
+    }
+
+    .burgur {
+        display: none;
+    }
+
+    .nab_bar_nav ul {
+        display: flex;
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+    .nab_bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nab_bar_nav ul .nav_link {
+        margin: 0 15px;
+    }
+
+    .nab_bar_nav.responsive .burgur {
+        margin: 0 auto;
+    }
+
+    .user_link {
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nab_bar>* {
+        margin-bottom: 0;
+    }
+
 }
