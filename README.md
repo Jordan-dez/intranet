@@ -1,4 +1,4 @@
-télécarger le dossier du projet 
+- télécarger le dossier du projet 
 - faire un coup de npm install
 - faire npx vite --port=4000 pour démarrer le projet
 - télécharger le server https://github.com/Jordan-dez/server-intranet
